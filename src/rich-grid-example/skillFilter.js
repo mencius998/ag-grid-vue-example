@@ -32,7 +32,7 @@ export class SkillFilter {
         let eGui = document.createElement('div');
         eGui.style.width = '380px';
         let eInstructions = document.createElement('div');
-        eInstructions.innerHTML = FILTER_TITLE.replace('TITLE_NAME', 'Custom Skills Filter');
+        eInstructions.innerHTML = FILTER_TITLE.replace('TITLE_NAME', '技能过滤');
         eGui.appendChild(eInstructions);
 
         let that = this;

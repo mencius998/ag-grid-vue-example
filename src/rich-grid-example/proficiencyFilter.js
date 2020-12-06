@@ -27,7 +27,7 @@ export class ProficiencyFilter {
     getGui() {
         let eGui = document.createElement('div');
         let eInstructions = document.createElement('div');
-        eInstructions.innerHTML = FILTER_TITLE.replace('TITLE_NAME', 'Custom Proficiency Filter');
+        eInstructions.innerHTML = FILTER_TITLE.replace('TITLE_NAME', '熟练程度过滤');
         eGui.appendChild(eInstructions);
 
         let random = '' + Math.random();

@@ -3,12 +3,13 @@
         <div style="padding: 4px;">
             <div style="float: right;" class="d-flex">
                 <input class="mr-2 form-control d-inline-block" @keyup="onQuickFilterChanged" type="text" id="quickFilterInput"
-                       placeholder="Type text to filter..."/>
-                <button class="btn btn-primary mr-2" :disabled="!showGrid" @click="showGrid=false" style="white-space: nowrap;">Destroy Grid</button>
-                <button class="btn btn-primary" :disabled="showGrid" @click="showGrid=true" style="white-space: nowrap;">Create Grid</button>
+                       placeholder="模糊检索..."/>
+                <button class="btn btn-primary mr-2" :disabled="!showGrid" @click="showGrid=false" style="white-space: nowrap;">删除报表</button>
+                <button class="btn btn-primary" :disabled="showGrid" @click="showGrid=true" style="white-space: nowrap;">创建报表</button>
+                <button class="btn btn-primary mx-1" :disabled="showGrid" @click="createRowData()" style="white-space: nowrap;">刷新数据</button>
             </div>
             <div>
-                <b>Employees Skills and Contact Details</b>
+                <b>员工技能和联系方式明细表</b>
                 {{rowCount}}
             </div>
         </div>
@@ -16,22 +17,22 @@
         <div v-if="showGrid" class="d-flex flex-column flex-grow-1 flex-shrink-1">
             <div style="padding: 4px;" class="btn-toolbar">
             <span>
-                Grid API:
-                <button class="btn btn-primary mx-1" @click="gridOptions.api.selectAll()">Select All</button>
-                <button class="btn btn-primary mx-1" @click="gridOptions.api.deselectAll()">Clear Selection</button>
+                表格API示例:
+                <button class="btn btn-primary mx-1" @click="gridOptions.api.selectAll()">全选</button>
+                <button class="btn btn-primary mx-1" @click="gridOptions.api.deselectAll()">取消已选</button>
             </span>
                 <span style="margin-left: 20px;">
-                Column API:
-                <button class="btn btn-primary mx-1" @click="gridOptions.columnApi.setColumnVisible('country', false)">Hide Country Column</button>
-                <button class="btn btn-primary mx-1" @click="gridOptions.columnApi.setColumnVisible('country', true)">Show Country Column</button>
+                列API示例:
+                <button class="btn btn-primary mx-1" @click="gridOptions.columnApi.setColumnVisible('country', false)">隐藏列</button>
+                <button class="btn btn-primary mx-1" @click="gridOptions.columnApi.setColumnVisible('country', true)">显示列</button>
             </span>
             </div>
             <div class="btn-toolbar d-flex align-items-center py-2">
                 <label class="m-0">
                     <input type="checkbox" v-model="sideBar"/>
-                    Show Side Bar
+                   显示侧边栏
                 </label>
-                <button class="btn btn-primary mx-1" @click="createRowData()">Refresh Data</button>
+                
             </div>
             <ag-grid-vue style="width: 100%;" class="flex-grow-1 flex-shrink-1 ag-theme-alpine"
                          :gridOptions="gridOptions"
@@ -143,15 +144,15 @@
                         suppressMenu: true, pinned: true
                     },
                     {
-                        headerName: 'Employee',
+                        headerName: '人员信息',
                         headerGroupComponentFramework: HeaderGroupComponent,
                         children: [
                             {
-                                headerName: "Name", field: "name",
+                                headerName: "姓名", field: "name",
                                 width: 150, pinned: true,
                             },
                             {
-                                headerName: "Country", field: "country", width: 150,
+                                headerName: "国籍", field: "country", width: 150,
                                 cellRenderer: countryCellRenderer, pinned: true,
                                 filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}
                             },
@@ -171,17 +172,17 @@
                         ]
                     },
                     {
-                        headerName: 'IT Skills',
+                        headerName: 'IT 技能',
                         children: [
                             {
-                                headerName: "Skills",
+                                headerName: "技能",
                                 width: 125,
                                 sortable: false,
                                 cellRenderer: skillsCellRenderer,
                                 filter: SkillFilter
                             },
                             {
-                                headerName: "Proficiency",
+                                headerName: "熟练程度",
                                 field: "proficiency",
                                 width: 120,
                                 cellRenderer: percentCellRenderer,
@@ -190,11 +191,11 @@
                         ]
                     },
                     {
-                        headerName: 'Contact',
+                        headerName: '联系方式',
                         children: [
-                            {headerName: "Mobile", field: "mobile", width: 150, filter: 'text'},
-                            {headerName: "Land-line", field: "landline", width: 150, filter: 'text'},
-                            {headerName: "Address", field: "address", width: 500, filter: 'text'}
+                            {headerName: "手机", field: "mobile", width: 150, filter: 'text'},
+                            {headerName: "座机", field: "landline", width: 150, filter: 'text'},
+                            {headerName: "住址", field: "address", width: 500, filter: 'text'}
                         ]
                     }
                 ];

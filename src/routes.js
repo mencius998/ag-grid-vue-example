@@ -7,7 +7,7 @@ export default [
         components: {
             default: RichGridExample
         },
-        name: 'Rich Grid with Pure JavaScript'
+        name: 'Rich Grid 示例'
     },
-    { path: '/large-data', component: LargeDataSetExample, name: 'Large Data Example' }
+    { path: '/large-data', component: LargeDataSetExample, name: '大数据量示例' }
 ];

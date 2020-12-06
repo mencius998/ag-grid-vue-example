@@ -1,6 +1,6 @@
 <template>
     <div style="width: 100%;">
-        <h1>Large Data Set Component (50,000 rows)</h1>
+        <h1>大量数据加载示例 (50,000 条)</h1>
         <ag-grid-vue style="width: 100%; height: 650px;" class="ag-theme-alpine"
                      :rowData="rowData"
                      :columnDefs="columnDefs"
